@@ -118,14 +118,14 @@
     <ClCompile Include="FIFO.cpp" />
     <ClCompile Include="LIFO.cpp" />
     <ClCompile Include="Node.cpp" />
-    <ClCompile Include="NodeController.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FIFO.h" />
     <ClInclude Include="LIFO.h" />
     <ClInclude Include="Node.h" />
-    <ClInclude Include="NodeController.h" />
+    <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

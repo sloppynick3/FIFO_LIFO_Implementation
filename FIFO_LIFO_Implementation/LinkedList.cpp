@@ -1,25 +1,24 @@
-#include "NodeController.h"
+#include "LinkedList.h"
 #include <iostream>
 
 
 //---------------ADDING-------------------
 void NodeController::pushLIFO(int value)
 {
-
 	Node * ptr = new Node(value);
+	nodes++;
 	std::cout << "Created node " << std::endl;
+
 	ptr->link = head;
 	head = ptr;
 
 	if (ptr->link == nullptr) {
 		tail = ptr;
 	}
-	nodes++;
 }
 
 void NodeController::pushFIFO(int value) {
 	Node * ptr = new Node(value);
-	ptr->link = nullptr;
 	nodes++;
 
 	if (head == nullptr) { //That means its the first created node
@@ -27,10 +26,7 @@ void NodeController::pushFIFO(int value) {
 		tail = ptr;
 		return;
 	}
-
-	Node *i;
-	for (i = head; i->link != nullptr; i = i->link);
-	i->link = ptr;
+	tail->link = ptr;
 	tail = ptr;
 }
 
@@ -106,7 +102,7 @@ void NodeController::pushFIFO(int value) {
 
  }
 
- void NodeController::popTail() {
+ void NodeController::removeTail() {
 	 Node *previous = tail, *i;
 	 for (i = head; i->link != nullptr; i = i->link) {
 		 previous = i;
@@ -123,7 +119,7 @@ void NodeController::pushFIFO(int value) {
 void NodeController::remove(int node)
 {
 	if (node == nodes-1) {
-		popTail();
+		removeTail();
 		return;
 	}
 	if (node == 0) {
@@ -169,37 +165,29 @@ void NodeController::printList() {
 		return;
 	}
 
-	Node* cursor = head;
-
 	int i = 0;
-	while (cursor != nullptr) {
-		
+	for (Node* cursor = head; cursor != nullptr; cursor = cursor->link) {
 		int data = cursor->data;
 		std::cout << "Node nr. " << i << " data is: " << data << std::endl;
 		i++;
-		cursor = cursor->link;
 	}
 
-	std::cout << std::endl << std::endl << std::endl;
+	std::cout << "\n\n";
 }
 
 void NodeController::printListJSON() {
-	Node* cursor = head;
+	Node* cursor;
 	printf("{ \n  \"linkedList\" : { \n");
 	printf("    \"nodes\" : \"%i\", \n", nodes + 1);
 	printf("    \"values\" : [ ");
 
 	//Prints out values of linked list in an array for JSON
-	while (cursor->link != nullptr)
-	{
+	for (cursor = head; cursor->link != nullptr; cursor = cursor->link) {
 		printf("\"%i\" ,", cursor->data);
-		//std::cout  << "\""<< cursor->data << "\" ,";
 		if (cursor->link == nullptr) {
 			break;
 		}
-		cursor = cursor->link;
 	}
-
 	printf("\"%i\" ] \n  }\n}\n", cursor->data);
 
 }
@@ -207,13 +195,13 @@ void NodeController::printListJSON() {
 //---------------------------MISC--------------------------
 
 void NodeController::printListXML() {
-	Node* cursor = head;
 
 	printf("<linkedList>\n  <nodes>%i</nodes>\n",nodes+1);
-	while (cursor != nullptr) {
-		printf("  <values>%i</values\n",cursor->data);
-		cursor = cursor->link;
+
+	for (Node* cursor = head; cursor->link != nullptr; cursor = cursor->link) {
+		printf("  <values>%i</values\n", cursor->data);
 	}
+
 	printf("</linkedList>\n");
 }
 
@@ -221,6 +209,7 @@ void NodeController::sort() {
 	Node *i, *j;
 	i = head;
 
+	//Bubble sort
 	for (i = head; i != nullptr; i = i->link) {
 		for (j = i->link; j != nullptr; j = j->link) {
 			if (i->data > j->data) {
@@ -231,7 +220,7 @@ void NodeController::sort() {
 }
 
 Node* NodeController::findElement(int value) {
-	Node* node = nullptr; //If wont be found returns null
+	Node* node = nullptr; //If not found return null
 
 	for (Node* i = head; i != nullptr; i = i->link) {
 		if (i->data == value) {

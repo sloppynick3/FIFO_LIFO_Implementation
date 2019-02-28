@@ -3,10 +3,10 @@ class Node
 {
 public:
 	int data;
-	Node *link;
+	Node *link = nullptr;
 
 
-	Node(int data);
-	Node();
-	~Node();
+	Node(int data = 0);
+	//Node();
+	//~Node();
 };

@@ -15,7 +15,7 @@ public:
 	virtual void push(int value);
 	void pop();
 
-	void popTail();
+	void removeTail();
 
 	void clear();
 

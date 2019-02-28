@@ -1,5 +1,5 @@
 #pragma once
-#include "NodeController.h"
+#include "LinkedList.h"
 #include <iostream>
 class LIFO :
 	public NodeController

@@ -21,13 +21,13 @@
     <ClCompile Include="Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NodeController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LIFO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FIFO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,13 +35,13 @@
     <ClInclude Include="Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NodeController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LIFO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FIFO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
